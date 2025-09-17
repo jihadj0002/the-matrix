@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Navbar -->
+  <nav class="bg-indigo-600 text-white px-6 py-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold">AI Agent Service</h1>
+    <div>
+      <span class="mr-4">Hello, {{ user.username }}</span>
+      <a href="{% url 'logout' %}" class="bg-white text-indigo-600 px-4 py-2 rounded-xl font-semibold hover:bg-gray-100 transition">
+        Logout
+      </a>
+    </div>
+  </nav>
+
+  <!-- Dashboard Content -->
+  <section class="max-w-6xl mx-auto px-6 py-12">
+    <h2 class="text-3xl font-bold mb-6">Dashboard</h2>
+    <p class="mb-6">Welcome <strong>{{ user.first_name }} {{ user.last_name }}</strong>!</p>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white shadow rounded-2xl p-6 text-center">
+        <h3 class="font-semibold text-xl mb-3">Profile</h3>
+        <p>Update your account details and preferences.</p>
+        <a href="#" class="mt-4 inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg">View</a>
+      </div>
+      <div class="bg-white shadow rounded-2xl p-6 text-center">
+        <h3 class="font-semibold text-xl mb-3">My AI Agents</h3>
+        <p>Manage and monitor your AI Agents.</p>
+        <a href="#" class="mt-4 inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg">Manage</a>
+      </div>
+      <div class="bg-white shadow rounded-2xl p-6 text-center">
+        <h3 class="font-semibold text-xl mb-3">Support</h3>
+        <p>Need help? Reach out to our support team.</p>
+        <a href="#" class="mt-4 inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg">Contact</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
