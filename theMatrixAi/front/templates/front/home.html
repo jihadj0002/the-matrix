@@ -25,6 +25,24 @@
     </div>
   </section>
 
+  <!-- 🎥 Video Section (Portrait) -->
+<section class="max-w-sm mx-auto px-6 py-12">
+  <div class="aspect-[9/16]">
+    <iframe 
+      class="w-full h-[500px] rounded-2xl shadow-lg"
+      src="https://www.youtube.com/shorts/yeUPTLZvJl0" 
+      title="AI Agent Demo Video"
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+  <p class="text-center mt-4 text-gray-600">
+    Watch how our AI Agent handles real customer conversations seamlessly.
+  </p>
+</section>
+
+
   <!-- Features Section -->
   <section class="max-w-6xl mx-auto px-6 py-20">
     <h2 class="text-3xl font-bold text-center mb-12">Why Choose Our AI Agent?</h2>
@@ -105,25 +123,26 @@
     <div class="max-w-3xl mx-auto px-6 text-center">
       <h2 class="text-3xl font-bold mb-6">Get Started Today</h2>
       <p class="mb-8">Fill in your details and we’ll reach out to set up your AI Agent.</p>
-
-      <form action="#" method="POST" class="bg-white text-gray-900 p-8 rounded-2xl shadow">
+        <form action="{% url 'contact' %}" method="POST" class="bg-white text-gray-900 p-8 rounded-2xl shadow">
+        {% csrf_token %}
         <div class="mb-4">
-          <input type="text" name="name" placeholder="Your Name"
-                 class="w-full p-3 border rounded-xl focus:ring focus:ring-indigo-400" required>
+            <input type="text" name="name" placeholder="Your Name"
+                class="w-full p-3 border rounded-xl focus:ring focus:ring-indigo-400" required>
         </div>
         <div class="mb-4">
-          <input type="email" name="email" placeholder="Your Email"
-                 class="w-full p-3 border rounded-xl focus:ring focus:ring-indigo-400" required>
+            <input type="email" name="email" placeholder="Your Email"
+                class="w-full p-3 border rounded-xl focus:ring focus:ring-indigo-400" required>
         </div>
         <div class="mb-4">
-          <input type="text" name="business" placeholder="Your Business Name"
-                 class="w-full p-3 border rounded-xl focus:ring focus:ring-indigo-400">
+            <input type="text" name="business" placeholder="Your Business Name"
+                class="w-full p-3 border rounded-xl focus:ring focus:ring-indigo-400">
         </div>
         <button type="submit"
                 class="w-full bg-indigo-600 text-white py-3 rounded-xl font-semibold hover:bg-indigo-700 transition">
-          Request a Demo
+            Request a Demo
         </button>
-      </form>
+        </form>
+
     </div>
   </section>
 
