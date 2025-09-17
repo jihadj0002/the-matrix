@@ -14,9 +14,11 @@ jobs:
         # Remove the fetch-depth parameter or set it to 0
         with:
           fetch-depth: 0  # This downloads all history
-      - name: FTP-Deploy-Action
-        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+     - name: FTP Deploy
+        uses: peaceiris/actions-ftp@v2
         with:
-          ftp-server: ${{ secrets.FTP_SERVER }}
-          ftp-username: ${{ secrets.FTP_USERNAME }}
-          ftp-password: ${{ secrets.FTP_PASSWORD }}
+          host: ${{ secrets.FTP_SERVER }}
+          user: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          localDir: './'
+          remoteDir: './'
