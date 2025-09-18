@@ -13,7 +13,7 @@ from django.core.mail import send_mail  # optional if you want email
 # Create your views here.
 def home(request):
 
-    return render(request, "front/home.html", {"year": datetime.date.today().year})
+    return render(request, "front/home01.html", {"year": datetime.date.today().year})
 
 def contact(request):
     if request.method == "POST":
