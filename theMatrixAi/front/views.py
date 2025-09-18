@@ -6,14 +6,19 @@ from django.http import HttpResponse
 from .models import Contact
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
-
+from django.conf import settings
 from django.core.mail import send_mail  # optional if you want email
 
 # Create your views here.
 def home(request):
+    context = {
+        "year": datetime.date.today().year,
+        "matrixai_logo_url": f"{settings.MEDIA_URL}images/matrixai.png"
+    }
+    
 
-    return render(request, "front/home01.html", {"year": datetime.date.today().year})
+
+    return render(request, "front/home01.html", context)
 
 def contact(request):
     if request.method == "POST":
