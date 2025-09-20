@@ -1,46 +1,95 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>User Dashboard</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>A Shopping Page</title>
+  <link rel="stylesheet" href="{% static './front/main.css' %}">
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">C</div>
+      <nav>
+        <a href="#">🏠</a>
+        <a href="#">💬</a>
+        <a href="#">⚙️</a>
+      </nav>
+    </aside>
 
-  <!-- Navbar -->
-  <nav class="bg-indigo-600 text-white px-6 py-4 flex justify-between items-center">
-    <h1 class="text-xl font-bold">AI Agent Service</h1>
-    <div>
-      <span class="mr-4">Hello, {{ user.username }}</span>
-      <a href="{% url 'logout' %}" class="bg-white text-indigo-600 px-4 py-2 rounded-xl font-semibold hover:bg-gray-100 transition">
-        Logout
-      </a>
-    </div>
-  </nav>
+    <!-- Main -->
+    <main class="main">
+      <!-- Header -->
+      <header class="header">
+        <h1>A Shopping Page</h1>
+        <div class="tabs">
+          <button class="active">All Messages</button>
+          <button>Messenger</button>
+          <button>Whatsapp</button>
+        </div>
+        <input class="search" type="text" placeholder="Search by name...">
+      </header>
 
-  <!-- Dashboard Content -->
-  <section class="max-w-6xl mx-auto px-6 py-12">
-    <h2 class="text-3xl font-bold mb-6">Dashboard</h2>
-    <p class="mb-6">Welcome <strong>{{ user.first_name }} {{ user.last_name }}</strong>!</p>
+      <div class="content">
+        <!-- Conversations -->
+        <section class="conversations">
+          <div class="filter">
+            <button class="active">Unresolved</button>
+            <button>Labels</button>
+            <button>Agents</button>
+          </div>
+          <ul>
+            <li class="active">
+              <div class="avatar"></div>
+              <div>
+                <p class="name">Farhan Muhib Dhruba</p>
+                <p class="preview">Thank you, Farhan! Your order…</p>
+              </div>
+              <span class="time">9:13 AM</span>
+            </li>
+            <li>
+              <div class="avatar"></div>
+              <div>
+                <p class="name">Nazmus Sakib Rumman</p>
+                <p class="preview">Thanks for your order</p>
+              </div>
+              <span class="time">11:58 AM</span>
+            </li>
+          </ul>
+        </section>
 
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-white shadow rounded-2xl p-6 text-center">
-        <h3 class="font-semibold text-xl mb-3">Profile</h3>
-        <p>Update your account details and preferences.</p>
-        <a href="#" class="mt-4 inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg">View</a>
+        <!-- Chat -->
+        <section class="chat">
+          <div class="messages">
+            <div class="msg from">Thanks Farhan! Please confirm the quantity of Boon Avocado Quilt you want to order.</div>
+            <div class="msg to">Thank you, Farhan! Your order for 1 Boon Avocado Quilt is confirmed.</div>
+          </div>
+          <div class="input-bar">
+            <input type="text" placeholder="Type a message">
+            <button>Send</button>
+          </div>
+        </section>
+
+        <!-- Details -->
+        <aside class="details">
+          <div class="profile">
+            <div class="avatar big"></div>
+            <h3>Farhan Muhib Dhruba</h3>
+            <p>01788508701 · 3rd December, 2024</p>
+            <button class="stop">Stop AI</button>
+            <button class="primary">Manage Orders</button>
+            <button class="primary">Create Order</button>
+          </div>
+          <div class="notes">
+            <h4>Notes</h4>
+            <p>No notes yet</p>
+            <button>Add your first note</button>
+          </div>
+        </aside>
       </div>
-      <div class="bg-white shadow rounded-2xl p-6 text-center">
-        <h3 class="font-semibold text-xl mb-3">My AI Agents</h3>
-        <p>Manage and monitor your AI Agents.</p>
-        <a href="#" class="mt-4 inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg">Manage</a>
-      </div>
-      <div class="bg-white shadow rounded-2xl p-6 text-center">
-        <h3 class="font-semibold text-xl mb-3">Support</h3>
-        <p>Need help? Reach out to our support team.</p>
-        <a href="#" class="mt-4 inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg">Contact</a>
-      </div>
-    </div>
-  </section>
-
+    </main>
+  </div>
 </body>
 </html>
