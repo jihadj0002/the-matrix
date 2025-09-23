@@ -56,7 +56,7 @@ def c_dashboard(request):
 def login_view(request):
     print("Login open")
     if request.user.is_authenticated:
-        return redirect('home')  # Redirect if already logged in
+        return redirect('front:home')  # Redirect if already logged in
     
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
@@ -70,7 +70,7 @@ def login_view(request):
                 messages.success(request, f"Welcome back, {username}!")
                 
                
-                return redirect('dashboard')
+                return redirect('front:dashboard')
             else:
                 messages.error(request, "Invalid username or password.")
                 print("Login successful")
@@ -89,4 +89,4 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     messages.success(request, "You have been successfully logged out.")
-    return redirect('home')
+    return redirect('front:home')
