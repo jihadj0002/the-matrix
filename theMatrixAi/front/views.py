@@ -51,6 +51,15 @@ def dashboard(request):
 def c_dashboard(request):
     return render(request, "front/c_dashboard.html", {"user": request.user})
 
+def products(request):
+    return render(request, "front/products.html", {"user": request.user})
+
+def stats(request):
+    return render(request, "front/stats.html", {"user": request.user})
+
+def sett(request):
+    return render(request, "front/options.html", {"user": request.user})
+
 
 
 def login_view(request):
