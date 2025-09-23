@@ -1,95 +1,162 @@
-{% load static %}
-
-<!DOCTYPE html>
+<!-- FILE: index.html -->
+ {% load static %}
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>A Shopping Page</title>
-  <link rel="stylesheet" href="{% static './front/main.css' %}">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Chatbot Dashboard</title>
+  <link rel="stylesheet" href="{% static './front/dbstyles.css' %}" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="app">
-    <!-- Sidebar -->
     <aside class="sidebar">
-      <div class="logo">C</div>
-      <nav>
-        <a href="#">🏠</a>
-        <a href="#">💬</a>
-        <a href="#">⚙️</a>
+      <div class="brand">
+        <div class="logo">MA</div>
+        <div class="brand-text">Matrix AI</div>
+      </div>
+      <nav class="nav">
+        <a class="nav-item active" href="{% url 'front:dashboard' %}">Dashboard</a>
+        <a class="nav-item" href="{% url 'front:c_dashboard' %}">Conversations</a>
+        <a class="nav-item" href="#sales">Sales & Revenue</a>
+        <a class="nav-item" href="#products">Product List</a>
+        <a class="nav-item" href="#integrations">Integrations</a>
+        <a class="nav-item" href="#automation">Automation Settings</a>
+        <a class="nav-item" href="#stats">Statistics</a>
+        <a class="nav-item" href="#account">Account & Billing</a>
       </nav>
+      <div class="sidebar-footer">
+        <button class="btn-outline">Help</button>
+        <button class="btn-ghost">Logout</button>
+      </div>
     </aside>
 
-    <!-- Main -->
     <main class="main">
-      <!-- Header -->
-      <header class="header">
-        <h1>A Shopping Page</h1>
-        <div class="tabs">
-          <button class="active">All Messages</button>
-          <button>Messenger</button>
-          <button>Whatsapp</button>
+      <header class="topbar">
+        <div class="search-wrap">
+          <input class="search" placeholder="Search conversations, products..." />
         </div>
-        <input class="search" type="text" placeholder="Search by name...">
+        <div class="top-actions">
+          <button id="connectBtn" class="btn-primary">Connect Messenger</button>
+          <div class="avatar">J</div>
+        </div>
       </header>
 
-      <div class="content">
-        <!-- Conversations -->
-        <section class="conversations">
-          <div class="filter">
-            <button class="active">Unresolved</button>
-            <button>Labels</button>
-            <button>Agents</button>
-          </div>
-          <ul>
-            <li class="active">
-              <div class="avatar"></div>
-              <div>
-                <p class="name">Farhan Muhib Dhruba</p>
-                <p class="preview">Thank you, Farhan! Your order…</p>
-              </div>
-              <span class="time">9:13 AM</span>
-            </li>
-            <li>
-              <div class="avatar"></div>
-              <div>
-                <p class="name">Nazmus Sakib Rumman</p>
-                <p class="preview">Thanks for your order</p>
-              </div>
-              <span class="time">11:58 AM</span>
-            </li>
-          </ul>
-        </section>
+      <section class="content">
+        <div class="page-header">
+          <h1>Welcome, your e‑commerce store</h1>
+          <p class="sub">Overview of chatbot activity, sales and product performance.</p>
+        </div>
 
-        <!-- Chat -->
-        <section class="chat">
-          <div class="messages">
-            <div class="msg from">Thanks Farhan! Please confirm the quantity of Boon Avocado Quilt you want to order.</div>
-            <div class="msg to">Thank you, Farhan! Your order for 1 Boon Avocado Quilt is confirmed.</div>
+        <div class="cards">
+          <div class="card">
+            <div class="card-title">Sales</div>
+            <div class="card-value">$2,340</div>
           </div>
-          <div class="input-bar">
-            <input type="text" placeholder="Type a message">
-            <button>Send</button>
+          <div class="card">
+            <div class="card-title">Total Conversations</div>
+            <div class="card-value">128</div>
           </div>
-        </section>
+          <div class="card">
+            <div class="card-title">Conversion Rate</div>
+            <div class="card-value">12.5%</div>
+          </div>
+          <div class="card">
+            <div class="card-title">Active Products</div>
+            <div class="card-value">56</div>
+          </div>
+        </div>
 
-        <!-- Details -->
-        <aside class="details">
-          <div class="profile">
-            <div class="avatar big"></div>
-            <h3>Farhan Muhib Dhruba</h3>
-            <p>01788508701 · 3rd December, 2024</p>
-            <button class="stop">Stop AI</button>
-            <button class="primary">Manage Orders</button>
-            <button class="primary">Create Order</button>
+        <div class="layout-2cols">
+          <div class="panel conversations-panel">
+            <div class="panel-header">
+              <h2>Conversations</h2>
+              <input placeholder="Search" class="mini-search" />
+            </div>
+            <table class="conversations-table">
+              <thead>
+                <tr><th>Customer</th><th>Date</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Jenny Wilson</td><td>June 5</td><td><span class="badge pending">Pending</span></td></tr>
+                <tr><td>Robert Fox</td><td>June 4</td><td><span class="badge success">Successful</span></td></tr>
+                <tr><td>Darlene Robertson</td><td>June 3</td><td><span class="badge closed">Closed</span></td></tr>
+                <tr><td>Jenny Wilson</td><td>June 2</td><td><span class="badge pending">Pending</span></td></tr>
+              </tbody>
+            </table>
           </div>
-          <div class="notes">
-            <h4>Notes</h4>
-            <p>No notes yet</p>
-            <button>Add your first note</button>
+
+          <div class="panel sales-panel">
+            <div class="panel-header">
+              <h2>Sales & Revenue</h2>
+              <div class="panel-sub">Last 30 days</div>
+            </div>
+            <div class="chart-wrap">
+              <!-- Simple inline sparkline using SVG (placeholder) -->
+              <svg viewBox="0 0 300 120" class="sparkline" preserveAspectRatio="none">
+                <polyline fill="none" stroke="#2563eb" stroke-width="3" points="0,90 30,70 60,85 90,60 120,80 150,55 180,65 210,40 240,60 270,30 300,20" />
+              </svg>
+            </div>
+
+            <div class="sales-stats">
+              <div class="stat-item"><div class="s-label">Avg Order</div><div class="s-value">$34.20</div></div>
+              <div class="stat-item"><div class="s-label">Chat Sales</div><div class="s-value">42</div></div>
+              <div class="stat-item"><div class="s-label">Response Time</div><div class="s-value">1h 12m</div></div>
+            </div>
           </div>
-        </aside>
-      </div>
+        </div>
+
+        <div class="layout-3cols">
+          <div class="small-panel">
+            <h3>Top Products (via Chatbot)</h3>
+            <ol class="product-list">
+              <li>Wireless Headphones <span class="muted">— 12 sold</span></li>
+              <li>Smart Watch <span class="muted">— 9 sold</span></li>
+              <li>Yoga Mat <span class="muted">— 7 sold</span></li>
+            </ol>
+          </div>
+
+          <div class="small-panel">
+            <h3>Integrations</h3>
+            <ul class="integrations-list">
+              <li>Facebook Messenger <span class="dot connected">connected</span></li>
+              <li>Shopify <span class="dot sync">sync</span></li>
+              <li>WhatsApp <span class="dot off">not connected</span></li>
+            </ul>
+          </div>
+
+          <div class="small-panel">
+            <h3>Automation Quick Toggle</h3>
+            <div class="toggle-row">
+              <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+              <div class="toggle-label">Auto-respond to FAQs</div>
+            </div>
+            <div class="toggle-row">
+              <label class="switch"><input type="checkbox"><span class="slider"></span></label>
+              <div class="toggle-label">Upsell recommended products</div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <footer class="footer">
+        <div>© 2025 Matrix AI • Built with n8n</div>
+        <div class="footer-links">Privacy • Terms</div>
+      </footer>
     </main>
   </div>
+
+  <script>
+    // minimal interactivity for the Connect button
+    document.getElementById('connectBtn').addEventListener('click', function(){
+      const token = prompt('Paste your Messenger Page Access Token or Webhook URL:');
+      if(token) alert('Saved (demo). In production you would POST this securely to your backend.');
+    });
+  </script>
 </body>
 </html>
+
+

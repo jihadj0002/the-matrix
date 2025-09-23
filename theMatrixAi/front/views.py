@@ -48,6 +48,10 @@ def dashboard(request):
     return render(request, "front/dashboard.html", {"user": request.user})
 
 
+def c_dashboard(request):
+    return render(request, "front/c_dashboard.html", {"user": request.user})
+
+
 
 def login_view(request):
     print("Login open")
@@ -85,4 +89,4 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     messages.success(request, "You have been successfully logged out.")
-    return render(request, "front/home.html", {"year": datetime.date.today().year})
+    return redirect('home')

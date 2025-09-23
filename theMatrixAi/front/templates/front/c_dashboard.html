@@ -1,0 +1,105 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Chatbot Dashboard</title>
+  <link rel="stylesheet" href="{% static './front/main.css' %}">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">MA</div>
+        <div class="brand-text">Matrix AI</div>
+      </div>
+      <nav class="nav">
+        <a class="nav-item active" href="{% url 'front:dashboard' %}">🏠 Dashboard</a>
+        <a class="nav-item" href="#conversations">💬 Conversations</a>
+        <a class="nav-item" href="#sales">💵 Sales</a>
+        <a class="nav-item" href="#products">📦 Products</a>
+        <a class="nav-item" href="#integrations">🔗 Integrations</a>
+        <a class="nav-item" href="#automation">⚙️ Automation</a>
+        <a class="nav-item" href="#stats">📊 Stats</a>
+        <a class="nav-item" href="#account">👤 Account</a>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <!-- Header -->
+      <header class="header">
+        <h1>AI Chatbot Dashboard</h1>
+        <div class="tabs">
+          <button class="active">All Messages</button>
+          <button>Messenger</button>
+          <button>Whatsapp</button>
+        </div>
+        <input class="search" type="text" placeholder="Search by name...">
+      </header>
+
+      <div class="content">
+        <!-- Conversations -->
+        <section class="conversations">
+          <div class="filter">
+            <button class="active">Unresolved</button>
+            <button>Labels</button>
+            <button>Agents</button>
+          </div>
+          <ul>
+            <li class="active">
+              <div class="avatar"></div>
+              <div>
+                <p class="name">Jenny Wilson</p>
+                <p class="preview">Your order has been placed successfully.</p>
+              </div>
+              <span class="time">9:13 AM</span>
+            </li>
+            <li>
+              <div class="avatar"></div>
+              <div>
+                <p class="name">Robert Fox</p>
+                <p class="preview">Payment received, thanks!</p>
+              </div>
+              <span class="time">11:58 AM</span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Chat -->
+        <section class="chat">
+          <div class="messages">
+            <div class="msg from">Thanks Jenny! Please confirm the quantity of Smart Watch you want to order.</div>
+            <div class="msg to">Thank you Jenny, your order for 1 Smart Watch is confirmed.</div>
+          </div>
+          <div class="input-bar">
+            <input type="text" placeholder="Type a message">
+            <button>Send</button>
+          </div>
+        </section>
+
+        <!-- Details -->
+        <aside class="details">
+          <div class="profile">
+            <div class="avatar big"></div>
+            <h3>Jenny Wilson</h3>
+            <p>01512345678 · 22nd September, 2025</p>
+            <button class="stop">Stop AI</button>
+            <button class="primary">Manage Orders</button>
+            <button class="primary">Create Order</button>
+          </div>
+          <div class="notes">
+            <h4>Notes</h4>
+            <p>No notes yet</p>
+            <button>Add your first note</button>
+          </div>
+        </aside>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
