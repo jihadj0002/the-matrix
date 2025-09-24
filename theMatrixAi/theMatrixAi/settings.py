@@ -34,6 +34,8 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     "front",
     "back",
+    
+    # "mysql",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -82,6 +84,7 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
 
 
 # Password validation
