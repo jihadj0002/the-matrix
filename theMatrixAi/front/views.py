@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 import datetime
 from django.http import HttpResponse
@@ -44,6 +45,7 @@ def contact(request):
     
     return HttpResponse("❌ Invalid request.")
 
+login_required()
 def dashboard(request):
     return render(request, "front/dashboard.html", {"user": request.user})
 
@@ -64,9 +66,13 @@ def sett(request):
 
 def login_view(request):
     print("Login open")
-    if request.user.is_authenticated:
-        return redirect('front:home')  # Redirect if already logged in
     
+    if request.user.is_authenticated:
+        return redirect('back:dashboard')  # Redirect if already logged in
+    
+    # Always get next URL from GET parameter
+    next_url = request.GET.get('next', '')
+
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
@@ -78,22 +84,45 @@ def login_view(request):
                 login(request, user)
                 messages.success(request, f"Welcome back, {username}!")
                 
-               
-                return redirect('front:dashboard')
+                # Redirect to next_url if provided, else dashboard
+                if next_url:
+                    return redirect(next_url)
+                return redirect('back:dashboard')
             else:
                 messages.error(request, "Invalid username or password.")
-                print("Login successful")
+                print("Login failed")
         else:
             messages.error(request, "Invalid username or password.")
     else:
         form = AuthenticationForm()
-        # Store next URL from GET parameter
-        next_url = request.GET.get('next', '')
     
     return render(request, 'front/login.html', {
         'form': form,
         'next': next_url
     })
+
+
+def signup(request):
+    if request.method == "POST":
+        try:
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user_obj = User.objects.filter(username=username)
+            
+            if user_obj.exists():
+                messages.error(request, "Username is taken")
+                return redirect("front:signup")
+            user = User.objects.create(username=username) #Here using password=password dosent works because thats not clean data I guess. 
+            user.set_password(password)
+            
+            user.save()
+            messages.success(request, "User Created Successfully")
+            
+        except Exception as e:
+            messages.error(request, "Smething Went Wrong")
+    
+    return render(request, "front/sign-up.html")
+
 
 def logout_view(request):
     logout(request)

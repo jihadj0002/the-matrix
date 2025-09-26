@@ -14,5 +14,6 @@ urlpatterns = [
     path("dashboard/chats", views.c_dashboard, name="c_dashboard"),
     
     path("login", views.login_view, name="login"),
+    path("signup", views.signup, name="signup"),
     path("logout", views.logout_view, name="logout"),
 ]

@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here.
+
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -17,7 +18,7 @@ class User(AbstractUser):
 
     email = models.EmailField(unique=True)
     plan = models.CharField(max_length=20, choices=PLAN_CHOICES, default="free")
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True)
 
     # Override related_name to avoid clashes with default auth.User

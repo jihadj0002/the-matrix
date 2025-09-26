@@ -1,11 +1,12 @@
 from django.shortcuts import render
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def dashboard(request):
     return render(request, "back/dashboard.html", {"user": request.user})
 
 
+login_required()
 def c_dashboard(request):
     return render(request, "back/c_dashboard.html", {"user": request.user})
 
